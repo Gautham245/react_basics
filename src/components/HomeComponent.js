@@ -10,7 +10,7 @@ function RenderCard({item}) {
             <CardBody>
             <CardTitle>{item.name}</CardTitle>
             {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null }
-            <CardText>{item.description}</CardText>
+            <CardText className="text-justify">{item.description}</CardText>
             </CardBody>
         </Card>
     );
