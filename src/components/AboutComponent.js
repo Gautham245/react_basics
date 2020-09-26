@@ -14,9 +14,8 @@ function RenderLeader({leaders})
           <Media heading>{leader.name}</Media>
           <p className=" text-muted ">{leader.designation}</p>
           <p className="text-justify">{leader.description}</p>
-        </Media><br/><br/>
+        </Media>
       </Media>
-
     );
   });
   return(
@@ -76,14 +75,12 @@ function About(props) {
           </div>
       </div>
       <div className="row row-content">
-          <div className="col-12">
-              <h2>Corporate Leadership</h2>
-          </div>
-          <div className="col-12">
-              <Media list>
-                  <RenderLeader leaders={props.leaders}/>
-              </Media>
-          </div>
+        <div className="col-12">
+            <h2>Corporate Leadership</h2>
+        </div>
+        <Media list className="col-12">
+            <RenderLeader leaders={props.leaders}/>
+        </Media>
       </div>
     </div>
   );
