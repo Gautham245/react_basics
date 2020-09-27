@@ -12,6 +12,7 @@ class Header extends Component {
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
       }
 
       toggleNav() {
@@ -24,6 +25,13 @@ class Header extends Component {
           isModalOpen: !this.state.isModalOpen
         });
       }
+      handleLogin(event) {
+        this.toggleModal();
+        alert("Username: " + this.username.value + " Password: " + this.password.value
+            + " Remember: " + this.remember.checked);
+        event.preventDefault();
+
+    }
 
     render() {
         return(
