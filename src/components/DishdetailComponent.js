@@ -23,7 +23,7 @@ function RenderDish({dish})
         <div></div>
     );
 }
-function RenderComments({comments})
+ function RenderComments({comments, addComment, dishId})
 {
   if(comments!=null){
     var commentList = comments.map(comment => {
@@ -43,7 +43,7 @@ function RenderComments({comments})
         </CardTitle>
         <CardBody>
             <CardText>{commentList}</CardText>
-            <CommentForm /><br/>
+            <CommentForm dishId={dishId} addComment={addComment} />
         </CardBody>
       </Card>
     );
@@ -72,7 +72,10 @@ const Dishdetail = (props) => {
             <RenderDish dish={props.dish} />
         </div>
         <div className="col-12 col-md-5 m-1">
-            <RenderComments comments={props.comments} />
+          <RenderComments comments={props.comments}
+             addComment={props.addComment}
+             dishId={props.dish.id}
+           />
         </div>
       </div>
     </div>
@@ -108,7 +111,8 @@ export class CommentForm extends Component {
   }
 
   handleSubmit(values){
-    alert('Current State is :' + JSON.stringify(values));
+    this.toggleModal();
+    this.props.addComment(this.props.dishId, values.rating, values.author, values.comment );
   }
 
   render(){
@@ -155,9 +159,9 @@ export class CommentForm extends Component {
                 </Col>
               </Row>
               <Row>
-              <Label xs={12} htmlFor="message">Comment</Label>
+              <Label xs={12} htmlFor="comment">Comment</Label>
                 <Col xs={12}>
-                  <Control.textarea xs={12} model=".message" id="message" Name="message"
+                  <Control.textarea xs={12} model=".comment" id="comment" Name="comment"
                       rows="6" className="form-control"/>
                 </Col>
                 <Col >
